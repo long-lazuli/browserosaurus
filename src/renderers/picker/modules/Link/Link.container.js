@@ -3,6 +3,7 @@ import mousetrap from 'mousetrap'
 import opn from 'opn'
 import React, { Component } from 'react'
 
+import openApp from '../../../utils/OpenApp'
 import Link from './Link'
 
 class BrowserLinkContainer extends Component {
@@ -52,16 +53,21 @@ class BrowserLinkContainer extends Component {
    */
   openBrowser = appName => {
     const currentWindow = remote.getCurrentWindow()
-    opn(this.props.url, { app: appName, wait: false })
-      .then(() => currentWindow.hide())
-      .catch(() => {
-        alert(
-          `Oh no! An error just occurred, please report this as a GitHub issue. Opened URL was ${
-            this.props.url
-          }`
-        )
-        currentWindow.hide()
-      })
+    if( this.props.url !== null ){
+      opn(this.props.url, { app: appName, wait: false })
+        .then(() => currentWindow.hide())
+        .catch(() => {
+          alert(
+            `Oh no! An error just occurred, please report this as a GitHub issue. Opened URL was ${
+              this.props.url
+            }`
+          )
+          currentWindow.hide()
+        })
+    }else{
+      openApp(appName)
+      currentWindow.hide()
+    }
   }
 
   render() {

@@ -104,7 +104,19 @@ function createTrayIcon() {
 
     tray.setToolTip('Browserosaurus')
 
-    tray.setContextMenu(contextMenu)
+    tray.on('click', (e)=>{
+      if( pickerWindow.isVisible() ){
+        pickerWindow.hide()
+      }else{
+        pickerWindow.webContents.send('incomingURL', null)
+        pickerWindow.center()
+        pickerWindow.show()
+      }
+    })
+
+    tray.on('right-click', (e)=>{
+      tray.popUpContextMenu(contextMenu)
+    })
 
     resolve()
   })
