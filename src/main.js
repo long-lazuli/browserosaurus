@@ -38,7 +38,7 @@ function createPickerWindow() {
       resizable: false,
       movable: false,
       show: false,
-      title: 'Browserosaurus',
+      title: 'browsers.menu',
       hasShadow: true,
       backgroundColor: '#21252b'
     })
@@ -102,7 +102,7 @@ function createTrayIcon() {
 
     tray.setPressedImage(`${__dirname}/images/icon/tray_iconHighlight.png`)
 
-    tray.setToolTip('Browserosaurus')
+    tray.setToolTip('browsers.menu')
 
     tray.on('click', (e)=>{
       if( pickerWindow.isVisible() ){
@@ -282,7 +282,7 @@ app.on('ready', async () => {
   appIsReady = true
 
   if (global.URLToOpen) {
-    // if Browserosaurus was opened with a link, this will now be sent on to the picker window
+    // if browsers.menu was opened with a link, this will now be sent on to the picker window
     pickerWindow.webContents.send('incomingURL', global.URLToOpen)
     global.URLToOpen = null // not required any more
   }
@@ -297,7 +297,7 @@ app.on('ready', async () => {
 /**
  * Event: Open URL
  *
- * When a URL is sent to Browserosaurus (as it is default browser), send it to
+ * When a URL is sent to browsers.menu (as it is default browser), send it to
  * the picker.
  * @param {string} url
  */
@@ -311,5 +311,5 @@ app.on('open-url', (event, url) => {
   }
 })
 
-// Hide dock icon. Also prevents Browserosaurus from appearing in cmd-tab.
+// Hide dock icon. Also prevents browsers.menu from appearing in cmd-tab.
 app.dock.hide()

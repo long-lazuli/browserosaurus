@@ -15,14 +15,14 @@ class UpdateStatusContainer extends Component {
   /**
    * Check For Update
    *
-   * Checks GitHub API for Browserosaurus's latest release.
+   * Checks GitHub API for browsers.menu's latest release.
    * NB: only allowed 60 requests per IP address per hour.
    * @returns {object} - {update: boolean, message: string} if update true,
    * message is URL to latest release, else message is string to be displayed.
    */
   _checkForUpdate = () => {
     return fetch(
-      'https://api.github.com/repos/will-stone/browserosaurus/releases/latest'
+      'https://api.github.com/repos/long-lazuli/browsers.menu/releases/latest'
     )
       .then(response => response.json())
       .then(response => {

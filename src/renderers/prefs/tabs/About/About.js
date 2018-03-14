@@ -14,11 +14,11 @@ const About = () => {
           alt=""
           style={{ display: 'block', margin: '0 auto' }}
           onClick={() =>
-            shell.openExternal('https://will-stone.github.io/browserosaurus/')
+            shell.openExternal('https://long-lazuli.github.io/browsers.menu/')
           }
         />
       </p>
-      <h1>Browserosaurus</h1>
+      <h1>Browsers.menu</h1>
       <h3 style={{ marginBottom: '1rem' }}>v{remote.app.getVersion()}</h3>
       <p>
         <UpdateStatus />

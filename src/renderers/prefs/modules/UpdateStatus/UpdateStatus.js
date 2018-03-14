@@ -8,7 +8,7 @@ const UpdateStatus = ({ status }) => {
       return 'Checking for update...'
 
     case 'limitExceeded':
-      return "API rate limit exceeded, please try again later or visit Browserosaurus's website to check for an update"
+      return "API rate limit exceeded, please try again later or visit browsers.menu's website to check for an update"
 
     case 'latestVersion':
       return 'You have the latest version'
@@ -18,7 +18,7 @@ const UpdateStatus = ({ status }) => {
         <Button
           onClick={() =>
             shell.openExternal(
-              'https://github.com/will-stone/browserosaurus/releases/latest'
+              'https://github.com/long-lazuli/browsers.menu/releases/latest'
             )
           }
           intent="primary"

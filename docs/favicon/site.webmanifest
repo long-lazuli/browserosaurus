@@ -1,6 +1,6 @@
 {
-    "name": "Browserosaurus",
-    "short_name": "Browserosaurus",
+    "name": "browsers.menu",
+    "short_name": "browsers.menu",
     "icons": [
         {
             "src": "android-chrome-192x192.png?v=kPxjKNP4y0",
