@@ -2,6 +2,8 @@ import { ipcRenderer, remote } from 'electron'
 import { Component } from 'react'
 import opn from 'opn'
 
+const dblClickTimeout = 300
+
 class UrlListener extends Component {
   constructor() {
     super()
@@ -21,20 +23,28 @@ class UrlListener extends Component {
   }
 
   _onReceiveURL(url){
-    const isDblClick = ( this.state.url === url && ( new Date() - this.state.lastClickDate < 300 ) )
 
     this.setState(
-      {
-        url: isDblClick ? null : url,
-        lastClickDate: isDblClick ? 0 : new Date()
-      },
-      () => {
+      (prevState, props) => {
+        const isDblClick = ( prevState.url === url && ( new Date() - prevState.lastClickDate < dblClickTimeout ) )
+
         if( isDblClick ){
+
           opn(url, { app: this.props.defaultBrowser.name, wait: false })
+
         }else{
-          const window = remote.getCurrentWindow()
-          window.center()
-          window.show()
+
+          setTimeout(()=>{
+            const window = remote.getCurrentWindow()
+            window.center()
+            window.show()
+          }, dblClickTimeout  )
+
+        }
+
+        return {
+          url: isDblClick ? null : url,
+          lastClickDate: isDblClick ? 0 : new Date()
         }
       }
     )
